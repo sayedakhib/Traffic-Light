@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light Simulator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-image: url(https://en-media.thebetterindia.com/uploads/2016/06/Untitled-design-4-2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .traffic-light {
+            width: 30vw;
+            height: 75vh;
+            max-width: 120px;
+            max-height: 300px;
+            border: 2px solid white;
+            background-color: black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .light {
+            width: 20vw;
+            height: 20vw;
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 50%;
+            margin: 10px 0;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: rgb(49, 253, 49);
+        }
+
+        @media (max-width: 600px) {
+            .traffic-light {
+                width: 50vw;
+                height: 50vh;
+            }
+
+            .light {
+                width: 15vw;
+                height: 15vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+    </div>
+
+    <script>
+        const redLight = document.querySelector('.red');
+        const yellowLight = document.querySelector('.yellow');
+        const greenLight = document.querySelector('.green');
+
+        function changeLights() {
+            setTimeout(() => {
+                redLight.style.backgroundColor = 'red';
+                yellowLight.style.backgroundColor = 'transparent';
+                greenLight.style.backgroundColor = 'transparent';
+
+                setTimeout(() => {
+                    redLight.style.backgroundColor = 'transparent';
+                    yellowLight.style.backgroundColor = 'yellow';
+                    greenLight.style.backgroundColor = 'transparent';
+
+                    setTimeout(() => {
+                        redLight.style.backgroundColor = 'transparent';
+                        yellowLight.style.backgroundColor = 'transparent';
+                        greenLight.style.backgroundColor = 'green';
+
+                        changeLights();
+                    }, 2000);
+                }, 1000);
+            }, 2000);
+        }
+
+        changeLights();
+    </script>
+</body>
+</html>
